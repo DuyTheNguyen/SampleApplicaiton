@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Row, Col, Accordion, Card, Button} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import Task from './Task';
 
 const READ_API = location.protocol + '//' + location.host + '/api/task/';
