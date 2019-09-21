@@ -14,8 +14,10 @@ You're going to need:
 
 1. Clone this repository on GitHub to your Window.
 2. Extract the `.zip` file.
-3. Open the file by using Visual Studio 2017.
-4. Build and Run the project. (Ctrl + F5)
+3. Open terminal to the project directory `...\SampleApplicaiton-master\SampleApplicaiton-master\SampleApplicaiton>`
+4. Run command `npm install` to install all the modules. **Required: Node JS**
+5. Open the file by using Visual Studio 2017.
+6. Build and Run the project. (Ctrl + F5)
 
 
 ## Built With
