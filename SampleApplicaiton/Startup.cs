@@ -30,6 +30,7 @@ namespace SampleApplicaiton
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //Register task context
             services.AddDbContext<TaskContext>(opt => opt.UseInMemoryDatabase("TaskList"));
         }
 

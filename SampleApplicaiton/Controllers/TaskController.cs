@@ -10,6 +10,9 @@ using SampleApplicaiton.Models;
 
 namespace SampleApplicaiton.Controllers
 {
+    /**
+     * Web API controller to expose CRUD operations for the tasks entity in EF
+     */
     [Route("api/[controller]")]
     [ApiController]
     public class TaskController : ControllerBase
@@ -21,7 +24,7 @@ namespace SampleApplicaiton.Controllers
             _context = context;
             if (_context.tasks.Count() == 0) {
                 // Create a new task if collection is empty which means cannot delete all tasks
-                _context.tasks.Add(new Models.Task { name = "Default Task" , description = "This is a default description"});
+                _context.tasks.Add(new Models.Task { name = "Doing Project" , description = "Set up the environment"});
                 _context.SaveChanges();
             }
         }
@@ -86,39 +89,5 @@ namespace SampleApplicaiton.Controllers
 
             return NoContent();
         }
-
-        /*
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
     }
 }

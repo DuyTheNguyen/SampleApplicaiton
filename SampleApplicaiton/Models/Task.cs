@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace SampleApplicaiton.Models
 {
+    /**
+     * This class represents the task model which has id, name and description
+     */
     public class Task
     {
         public long id { get; set; }

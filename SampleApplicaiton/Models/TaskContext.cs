@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SampleApplicaiton.Models
 {
+    /*
+     * This class connects Entity Framework fucntionality for a Task Model
+     */
     public class TaskContext: DbContext
     {
         public TaskContext(DbContextOptions<TaskContext> options) : base(options)
