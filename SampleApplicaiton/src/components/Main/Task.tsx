@@ -56,7 +56,6 @@ class Task extends React.Component<Props, State>{
                     onHide={this.closeUpdateModal}
                     reload={this.reloadPage}
                     taskId = {this.state.id}
-                    name = "Update Task"
                 />
             </div>
         );

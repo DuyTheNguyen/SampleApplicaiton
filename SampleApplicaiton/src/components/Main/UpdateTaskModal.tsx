@@ -48,7 +48,7 @@ class UpdateTaskModal extends React.Component<Props, State>{
 
     render(){
         const {updateName, updateDes} = this.state;
-        const {onHide, name, taskId} = this.props;
+        const {onHide, taskId} = this.props;
         return(
             <Modal
                 {...this.props}
@@ -93,7 +93,7 @@ class UpdateTaskModal extends React.Component<Props, State>{
                         disabled={updateName == "" || updateDes == ""}
                         onClick = {() => this.updateTask(taskId)}
                     >
-                        {name} 
+                        Update
                     </Button>
                     <Button variant="outline-warning" onClick={onHide}>Cancel</Button>
                 </Modal.Footer>

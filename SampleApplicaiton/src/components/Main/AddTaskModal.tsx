@@ -4,7 +4,6 @@ import {Modal, Button, InputGroup, FormControl} from 'react-bootstrap';
 const POST_API = location.protocol + '//' + location.host + '/api/task/';
 
 export interface Props{
-    name: string;
     onHide: () => void;
     reload: () => void;
     show: boolean;
@@ -47,7 +46,7 @@ class AddTaskModal extends React.Component<Props, State>{
     }
 
     render(){
-        const {name, onHide} = this.props;
+        const {onHide} = this.props;
         const {newName, newDes} = this.state;
         return(
             <Modal
@@ -58,7 +57,7 @@ class AddTaskModal extends React.Component<Props, State>{
             >
                 <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {name}
+                    Add New Task
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -93,7 +92,7 @@ class AddTaskModal extends React.Component<Props, State>{
                         disabled={newName == "" || newDes == ""}
                         onClick = {this.addTask}
                     >
-                        {name} 
+                        Add
                     </Button>
                     <Button variant="outline-primary" onClick={onHide}>Cancel</Button>
                 </Modal.Footer>

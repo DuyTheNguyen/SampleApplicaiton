@@ -37,7 +37,7 @@ class Home extends React.Component<{}, State>{
                             variant="primary"
                             onClick={this.openAddModal}
                             >
-                            Add New Task
+                            Add a New Task
                         </Button>
                     </Col>
                 </Row>
@@ -46,7 +46,6 @@ class Home extends React.Component<{}, State>{
                     show={this.state.showAddModal}
                     onHide={this.closeAddModal}
                     reload={this.reloadPage}
-                    name = "Add"
                 />
             </Container>
         
