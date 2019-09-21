@@ -2,6 +2,8 @@ import * as React from 'react';
 import {Accordion, Card, Button} from 'react-bootstrap';
 import UpdateTaskModal from './UpdateTaskModal'
 
+const DELETE_API = location.protocol + '//' + location.host + '/api/task/';
+
 export interface Props{
     task: any;
 }
@@ -27,6 +29,14 @@ class Task extends React.Component<Props, State>{
     openUpdateModal = (id) => { this.setState({showUpdateModal: true, id: id})};
     closeUpdateModal = () => { this.setState({showUpdateModal: false})};
 
+    deleteTask = (id) => {
+        fetch(DELETE_API + id, {
+            method: 'DELETE'
+        });
+
+        this.reloadPage();
+    } 
+
     render(){
         const { task } = this.props;
         return(
@@ -44,7 +54,12 @@ class Task extends React.Component<Props, State>{
                             >
                                 Update
                             </Button>
-                            <Button className="ml-2" variant="danger">Delete</Button>
+                            <Button 
+                                className="ml-2" variant="danger"
+                                onClick={()=>this.deleteTask(task.id)}
+                            >
+                                Delete
+                            </Button>
                         </Card.Header>
                         <Accordion.Collapse eventKey={task.id}>
                             <Card.Body>{task.description}</Card.Body>

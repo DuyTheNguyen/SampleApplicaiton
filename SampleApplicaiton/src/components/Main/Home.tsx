@@ -36,7 +36,7 @@ class Home extends React.Component<{}, State>{
                         <Button 
                             variant="primary"
                             onClick={this.openAddModal}
-                            >
+                        >
                             Add a New Task
                         </Button>
                     </Col>
