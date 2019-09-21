@@ -28,7 +28,6 @@ class DisplayTask extends React.Component<{}, State>{
                             />
                         ) : <div>No Task</div>
                     }
-                    
                 </Col>
             </Row>
         );

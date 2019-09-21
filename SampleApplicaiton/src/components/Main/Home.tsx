@@ -1,7 +1,7 @@
 import * as React from  'react';
 
 import DisplayTasks from "./DisplayTasks";
-import TaskModal from './TaskModal';
+import AddTaskModal from './AddTaskModal';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 
@@ -42,7 +42,7 @@ class Home extends React.Component<{}, State>{
                     </Col>
                 </Row>
                 <DisplayTasks/>
-                <TaskModal
+                <AddTaskModal
                     show={this.state.showAddModal}
                     onHide={this.closeAddModal}
                     reload={this.reloadPage}

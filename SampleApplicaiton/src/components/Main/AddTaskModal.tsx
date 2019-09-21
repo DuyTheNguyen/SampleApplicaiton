@@ -15,7 +15,7 @@ interface State{
     newDes: string;
 }
 
-class TaskModal extends React.Component<Props, State>{
+class AddTaskModal extends React.Component<Props, State>{
     constructor(props: Props){
         super(props);
         this.state = {
@@ -102,4 +102,4 @@ class TaskModal extends React.Component<Props, State>{
     }
 }
 
-export default TaskModal;
+export default AddTaskModal;
