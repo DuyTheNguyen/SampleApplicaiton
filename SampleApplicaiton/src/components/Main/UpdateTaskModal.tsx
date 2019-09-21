@@ -14,7 +14,10 @@ interface State{
     updateName: string;
     updateDes: string;
 }
-
+/**
+ * UpdateTaskModal Component
+ * + This components is a modal for adding task.
+ */
 class UpdateTaskModal extends React.Component<Props, State>{
     constructor(props: Props){
         super(props);
@@ -23,17 +26,22 @@ class UpdateTaskModal extends React.Component<Props, State>{
             updateDes: ""
         }
     }
-
+    
+    /** Start: Observing text chaning functions */
     observingUpdateName = (e) => {this.setState({updateName: e.target.value})}
     observingUpdateDes = (e) => {this.setState({updateDes: e.target.value})}
+    /** End: Observing text chaning functions */
 
+
+    /** Start: Update task function */
     updateTask = (id) => {
         let task = {
             "ID": id,
             "name": this.state.updateName,
             "description": this.state.updateDes
         }
-        console.log(PUT_API+ id);
+
+        //Call API
         fetch(PUT_API + id, {
             method:"PUT",
             body: JSON.stringify(task),
@@ -44,9 +52,10 @@ class UpdateTaskModal extends React.Component<Props, State>{
             .then(response => response.json())
             .catch(error => console.log(error))
         
-        this.props.reload();
+            this.props.reload();
     }
-
+    /** End: Update task function */
+    
     render(){
         const {updateName, updateDes} = this.state;
         const {onHide, taskId} = this.props;

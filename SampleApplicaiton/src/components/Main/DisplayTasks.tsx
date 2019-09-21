@@ -8,6 +8,10 @@ interface State{
     tasks: Array<any>;
 }
 
+/**
+ * DisplayTask Component
+ * + This components contains all the tasks
+ */
 class DisplayTask extends React.Component<{}, State>{
     constructor(props){
         super(props);
@@ -21,6 +25,7 @@ class DisplayTask extends React.Component<{}, State>{
             <Row>
                 <Col>
                     {
+                        /** Iterate tasks array */
                         (this.state.tasks != null && this.state.tasks.length != 0 ) ? this.state.tasks.map((task: any) => 
                             <Task
                                 key = {task.id}
@@ -33,6 +38,7 @@ class DisplayTask extends React.Component<{}, State>{
         );
     }
 
+    /** Call API once components are rendered to display all the tasks*/
     componentDidMount(){
         fetch(GET_API,{
             method: 'GET',

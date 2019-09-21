@@ -12,7 +12,10 @@ interface State{
     showUpdateModal: boolean;
     id: number;
 }
-
+/**
+ * Task Component
+ * + This components is a single task.
+ */
 class Task extends React.Component<Props, State>{
     constructor(props){
         super(props);
@@ -22,20 +25,26 @@ class Task extends React.Component<Props, State>{
         };
     }
 
+    /** Reload function */
     reloadPage = () =>{
         window.location.reload();
     }
 
+    /** Start: Update modal functions */
     openUpdateModal = (id) => { this.setState({showUpdateModal: true, id: id})};
     closeUpdateModal = () => { this.setState({showUpdateModal: false})};
+    /** End: Update modal functions */
 
+    /** Start: Delete task function */
     deleteTask = (id) => {
+        //Call API
         fetch(DELETE_API + id, {
             method: 'DELETE'
         });
-
+        
         this.reloadPage();
     } 
+    /** End: Delete task function */
 
     render(){
         const { task } = this.props;
@@ -47,6 +56,7 @@ class Task extends React.Component<Props, State>{
                             <Accordion.Toggle as={Button} variant="link" eventKey={task.id}>
                                 {task.name}
                             </Accordion.Toggle>
+                            {/** Update Button */}
                             <Button 
                                 className="ml-5" 
                                 variant="warning"
@@ -54,6 +64,7 @@ class Task extends React.Component<Props, State>{
                             >
                                 Update
                             </Button>
+                            {/** Delete Button */}
                             <Button 
                                 className="ml-2" variant="danger"
                                 onClick={()=>this.deleteTask(task.id)}
@@ -66,6 +77,8 @@ class Task extends React.Component<Props, State>{
                         </Accordion.Collapse>
                     </Card>
                 </Accordion>
+
+                {/** Update Task Modal */}
                 <UpdateTaskModal
                     show={this.state.showUpdateModal}
                     onHide={this.closeUpdateModal}

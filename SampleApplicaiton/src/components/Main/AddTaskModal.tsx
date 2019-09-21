@@ -14,6 +14,10 @@ interface State{
     newDes: string;
 }
 
+/**
+ * AddTaskModal Component
+ * + This components is a modal for adding task.
+ */
 class AddTaskModal extends React.Component<Props, State>{
     constructor(props: Props){
         super(props);
@@ -23,14 +27,19 @@ class AddTaskModal extends React.Component<Props, State>{
         };
     }
 
+    /** Start: Observing text chaning functions */
     observingNewName = (e) => {this.setState({newName: e.target.value})}
     observingNewDes = (e) => {this.setState({newDes: e.target.value})}
+    /** End: Observing text chaning functions */
+
+    /** Start: Add task function */
     addTask = () => {
         let task = {
             "name": this.state.newName,
             "description": this.state.newDes
         }
-
+        
+        //Call API
         fetch(POST_API,{
             method:"POST",
             body: JSON.stringify(task),
@@ -39,11 +48,12 @@ class AddTaskModal extends React.Component<Props, State>{
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => response.json())
-            .catch(error => console.log(error))
+        .then(response => response.json())
+        .catch(error => console.log(error))
         
         this.props.reload();
     }
+    /** End: Add task function */
 
     render(){
         const {onHide} = this.props;
