@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Task from './Task';
 
-const READ_API = location.protocol + '//' + location.host + '/api/task/';
+const GET_API = location.protocol + '//' + location.host + '/api/task/';
 
 interface State{
     tasks: Array<any>;
@@ -34,7 +34,7 @@ class DisplayTask extends React.Component<{}, State>{
     }
 
     componentDidMount(){
-        fetch(READ_API,{
+        fetch(GET_API,{
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         })

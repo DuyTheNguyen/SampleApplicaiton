@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import {Modal, Button, InputGroup, FormControl} from 'react-bootstrap';
+
 const POST_API = location.protocol + '//' + location.host + '/api/task/';
 
 export interface Props{
