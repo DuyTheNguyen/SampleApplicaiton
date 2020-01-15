@@ -49,10 +49,12 @@ class AddTaskModal extends React.Component<Props, State>{
             }
         })
             .then(response => response.json())
+            .then(result => {
+                this.props.onHide();
+                this.props.refresh();
+            })
             .catch(error => console.log(error));
 
-        this.props.onHide();
-        this.props.refresh();
     }
     /** End: Add task function */
 

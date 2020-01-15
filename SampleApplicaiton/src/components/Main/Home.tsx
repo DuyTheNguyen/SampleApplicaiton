@@ -21,10 +21,8 @@ class Home extends React.Component<{}, State>{
     }
     
     /** Reload function */
-    refresh = () =>{
-        this.displayTasksRef.current.getTasks();
-    }
-
+    refresh = () => this.displayTasksRef.current.getTasks();
+    
     /** Start: Add modal functions */
     openAddModal = () => { this.setState({showAddModal: true})};
     closeAddModal = () => this.setState({showAddModal: false});

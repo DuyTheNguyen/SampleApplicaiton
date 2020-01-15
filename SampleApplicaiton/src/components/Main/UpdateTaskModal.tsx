@@ -5,7 +5,7 @@ const PUT_API = location.protocol + '//' + location.host + '/api/task/';
 
 export interface Props{
     onHide: () => void;
-    reload: () => void;
+    refresh: () => void;
     show: boolean;
     taskId: number;
 }
@@ -36,7 +36,7 @@ class UpdateTaskModal extends React.Component<Props, State>{
     /** Start: Update task function */
     updateTask = (id) => {
         let task = {
-            "ID": id,
+            "id": id,
             "name": this.state.updateName,
             "description": this.state.updateDes
         }
@@ -49,10 +49,11 @@ class UpdateTaskModal extends React.Component<Props, State>{
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-            .then(response => response.json())
-            .catch(error => console.log(error))
-        
-            this.props.reload();
+            .then(result => {
+                this.props.onHide();
+                this.props.refresh();
+            })
+            .catch(error => console.log(error));
     }
     /** End: Update task function */
     

@@ -28,8 +28,9 @@ class DisplayTask extends React.Component<{}, State>{
                         /** Iterate tasks array */
                         (this.state.tasks != null && this.state.tasks.length != 0 ) ? this.state.tasks.map((task: any) => 
                             <Task
-                                key = {task.id}
-                                task = {task}
+                                key={task.id}
+                                task={task}
+                                refresh={this.getTasks}
                             />
                         ) : <div>No Task</div>
                     }

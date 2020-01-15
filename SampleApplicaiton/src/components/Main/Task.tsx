@@ -6,6 +6,7 @@ const DELETE_API = location.protocol + '//' + location.host + '/api/task/';
 
 export interface Props{
     task: any;
+    refresh: () => void;
 }
 
 interface State{
@@ -26,9 +27,7 @@ class Task extends React.Component<Props, State>{
     }
 
     /** Reload function */
-    reloadPage = () =>{
-        window.location.reload();
-    }
+    refresh = () => this.props.refresh();
 
     /** Start: Update modal functions */
     openUpdateModal = (id) => { this.setState({showUpdateModal: true, id: id})};
@@ -40,9 +39,9 @@ class Task extends React.Component<Props, State>{
         //Call API
         fetch(DELETE_API + id, {
             method: 'DELETE'
-        });
-        
-        this.reloadPage();
+        })
+            .then(result => this.refresh())
+            .catch(error => console.log(error));
     } 
     /** End: Delete task function */
 
@@ -82,7 +81,7 @@ class Task extends React.Component<Props, State>{
                 <UpdateTaskModal
                     show={this.state.showUpdateModal}
                     onHide={this.closeUpdateModal}
-                    reload={this.reloadPage}
+                    refresh={this.refresh}
                     taskId = {this.state.id}
                 />
             </div>
