@@ -5,7 +5,7 @@ const POST_API = location.protocol + '//' + location.host + '/api/task/';
 
 export interface Props{
     onHide: () => void;
-    reload: () => void;
+    refresh: () => void;
     show: boolean;
 }
 
@@ -40,18 +40,19 @@ class AddTaskModal extends React.Component<Props, State>{
         }
         
         //Call API
-        fetch(POST_API,{
-            method:"POST",
+        fetch(POST_API, {
+            method: "POST",
             body: JSON.stringify(task),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
-        .catch(error => console.log(error))
-        
-        this.props.reload();
+            .then(response => response.json())
+            .catch(error => console.log(error));
+
+        this.props.onHide();
+        this.props.refresh();
     }
     /** End: Add task function */
 

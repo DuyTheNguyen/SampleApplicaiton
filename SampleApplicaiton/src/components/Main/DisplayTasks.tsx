@@ -40,13 +40,17 @@ class DisplayTask extends React.Component<{}, State>{
 
     /** Call API once components are rendered to display all the tasks*/
     componentDidMount(){
-        fetch(GET_API,{
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
+        this.getTasks();
+    }
+
+    getTasks = () => {
+        fetch(GET_API, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
-            .then(tasks => this.setState({tasks}))
-            .catch(error => console.log(error))
+            .then(tasks => this.setState({ tasks }))
+            .catch(error => console.log(error));
     }
     
 }

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const react_bootstrap_1 = require("react-bootstrap");
 const POST_API = location.protocol + '//' + location.host + '/api/task/';
-class TaskModal extends React.Component {
+class AddTaskModal extends React.Component {
     constructor(props) {
         super(props);
         this.observingNewName = (e) => { this.setState({ newName: e.target.value }); };
@@ -31,11 +31,11 @@ class TaskModal extends React.Component {
         };
     }
     render() {
-        const { name, onHide } = this.props;
+        const { onHide } = this.props;
         const { newName, newDes } = this.state;
         return (React.createElement(react_bootstrap_1.Modal, Object.assign({}, this.props, { size: "lg", "aria-labelledby": "contained-modal-title-vcenter", centered: true }),
             React.createElement(react_bootstrap_1.Modal.Header, { closeButton: true },
-                React.createElement(react_bootstrap_1.Modal.Title, { id: "contained-modal-title-vcenter" }, name)),
+                React.createElement(react_bootstrap_1.Modal.Title, { id: "contained-modal-title-vcenter" }, "Add New Task")),
             React.createElement(react_bootstrap_1.Modal.Body, null,
                 React.createElement(react_bootstrap_1.InputGroup, { className: "mb-3" },
                     React.createElement(react_bootstrap_1.InputGroup.Prepend, null,
@@ -46,9 +46,9 @@ class TaskModal extends React.Component {
                         React.createElement(react_bootstrap_1.InputGroup.Text, null, "Description")),
                     React.createElement(react_bootstrap_1.FormControl, { as: "textarea", "aria-label": "Description", value: newDes, onChange: (e) => this.observingNewDes(e) }))),
             React.createElement(react_bootstrap_1.Modal.Footer, null,
-                React.createElement(react_bootstrap_1.Button, { variant: "primary", disabled: newName == "" || newDes == "", onClick: this.addTask }, name),
+                React.createElement(react_bootstrap_1.Button, { variant: "primary", disabled: newName == "" || newDes == "", onClick: this.addTask }, "Add"),
                 React.createElement(react_bootstrap_1.Button, { variant: "outline-primary", onClick: onHide }, "Cancel"))));
     }
 }
-exports.default = TaskModal;
-//# sourceMappingURL=TaskModal.js.map
+exports.default = AddTaskModal;
+//# sourceMappingURL=AddTaskModal.js.map

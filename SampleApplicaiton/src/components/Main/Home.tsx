@@ -13,19 +13,21 @@ interface State{
  * + This componentes is the main page
  */
 class Home extends React.Component<{}, State>{
+    displayTasksRef: React.RefObject<DisplayTasks>;
     constructor(props){
         super(props);
-        this.state = {showAddModal: false};
+        this.state = { showAddModal: false };
+        this.displayTasksRef = React.createRef();
     }
     
     /** Reload function */
-    reloadPage = () =>{
-        window.location.reload()
+    refresh = () =>{
+        this.displayTasksRef.current.getTasks();
     }
 
     /** Start: Add modal functions */
     openAddModal = () => { this.setState({showAddModal: true})};
-    closeAddModal = () => { this.setState({showAddModal: false})};
+    closeAddModal = () => this.setState({showAddModal: false});
     /** End: Add modal functions */
     
     render(){
@@ -51,13 +53,13 @@ class Home extends React.Component<{}, State>{
                 </Row>
 
                 {/** List of Tasks */}
-                <DisplayTasks/>
+                <DisplayTasks ref={this.displayTasksRef} />
 
                 {/** Add Modal */}
                 <AddTaskModal
                     show={this.state.showAddModal}
                     onHide={this.closeAddModal}
-                    reload={this.reloadPage}
+                    refresh={this.refresh}
                 />
             </Container>
         
