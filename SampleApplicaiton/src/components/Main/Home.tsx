@@ -32,15 +32,15 @@ class Home extends React.Component<{}, State>{
         return(
             <Container className="p-5">
                 {/** Title */}
-                <Row className="pb-3">
-                    <Col>
+                <Row className="justify-content-md-center pb-3">
+                    <Col md="auto">
                         <h1>Tasks Manager</h1>
                     </Col>
                 </Row>
 
                 {/** Content */}
-                <Row className="pb-1">
-                    <Col>
+                <Row className="justify-content-md-center pb-4">
+                    <Col md="auto">
                         <Button 
                             variant="primary"
                             onClick={this.openAddModal}

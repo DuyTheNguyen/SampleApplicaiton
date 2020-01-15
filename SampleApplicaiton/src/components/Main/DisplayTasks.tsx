@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Spinner} from 'react-bootstrap';
 import Task from './Task';
 
 const GET_API = location.protocol + '//' + location.host + '/api/task/';
 
 interface State{
     tasks: Array<any>;
+    isLoading: boolean;
 }
 
 /**
@@ -17,14 +18,16 @@ class DisplayTask extends React.Component<{}, State>{
         super(props);
         this.state = {
             tasks: null,
+            isLoading: true
         };
     }
 
     render(){
-        return(
-            <Row>
-                <Col>
+        return (
+            <Row className="justify-content-md-center">
+                <Col md="auto">
                     {
+                        (this.state.isLoading) ? <Spinner animation="border" /> :
                         /** Iterate tasks array */
                         (this.state.tasks != null && this.state.tasks.length != 0 ) ? this.state.tasks.map((task: any) => 
                             <Task
@@ -50,7 +53,7 @@ class DisplayTask extends React.Component<{}, State>{
             headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
-            .then(tasks => this.setState({ tasks }))
+            .then(tasks => this.setState({ tasks, isLoading: false }))
             .catch(error => console.log(error));
     }
     
